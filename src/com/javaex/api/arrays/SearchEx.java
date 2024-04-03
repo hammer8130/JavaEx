@@ -25,7 +25,7 @@ public class SearchEx {
 		int id = Arrays.binarySearch(nums, 8);
 //								   검색 대상 배열
 		System.out.println("8의 인덱스:"+id);
-		
+		 
 		// 참조 타입의 검색
 		String[] data = {"Java","C","C++","Python","Linux"};
 		Arrays.sort(data);
