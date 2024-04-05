@@ -1,5 +1,7 @@
 package com.javaex.collection.list;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,8 +9,8 @@ public class ListEx {
 
 	public static void main(String[] args) {
 		// List  객체x, Interface
-		List<String> li = new LinkedList<String>();
-		
+//		List<String> li = new LinkedList<String>();
+		List<String> li = new ArrayList<String>();  // 실제 클래스만 바꿔 작동방식을 바꾸는 인터페이스의 편리함.
 		// 객체 추가 : .add
 		// List 중복 삽입 허용
 		li.add("최고다 우찬");
@@ -34,7 +36,15 @@ public class ListEx {
 		li.remove("최고다 우찬");
 		System.out.println("li="+li);
 		
-		// TODO: List 순회
+		// Set, List 순회시 Iterator 객체 사용
+		System.out.println("===========Iterator");
+		Iterator<String> it = li.iterator();  //list의 iterator ( 반복자 ) 추출
+		while(it.hasNext()) {
+			String item = it.next(); // 요소 추출 후 다음으로 이동
+			System.out.print(item+" ");
+			
+		}
+		System.out.println();  // 반복문이 아닌 iterator를 사용한 루프 생성 및 데이터 추출
 		
 		// 비우기
 		li.clear();
