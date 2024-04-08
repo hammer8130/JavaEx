@@ -63,9 +63,9 @@ public class HashSetEx {
 		//1. HashSet 사용법 (기본타입)
 //		usingHashSet();
 		//2. 집합 연산
-//		setOperation();
+		setOperation();
 		//3. HashSet 사용법 (객체자료형)
-		usingHashSetWithCusTom();
+//		usingHashSetWithCusTom();
 	}
 	private static void usingHashSet() {
 		HashSet<String> hs = new HashSet<String>();
@@ -141,7 +141,7 @@ public class HashSetEx {
 		Student s2= new Student("홍길동",20);
 		Student s3= new Student("고길동",30); // s3와 s4는 다른객체이지만 , 동등객체
 //											 따라서, 중복되지 않는 값을 저장하는 hash의 난점
-//											==>equals()를 Override하여 사용해 두 객체가 같다는 로직 만들어야
+//											==>equals()를 Override하여 사용해 두 객체가 같다는 로직 만들어야 함.
 		Student s4= new Student("고길동",30); // s3 != s4 ==> 동등한 객체가 hash에 추가된다.
 		hs.add(s1); hs.add(s2);
 		hs.add(s3); hs.add(s4);
