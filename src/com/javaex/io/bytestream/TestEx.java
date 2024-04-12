@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class TestEx {
-
+// img 복사
 	private static String path = System.getProperty("user.dir")+"\\files\\";
 	private static String source = path+"img.jpg";
 	private static String target = path+"img copy2.jpg";
