@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class FileClassEx {
 	// files의 경로 위치 
-	private static String rootPath = System.getProperty("user.dir")+"\\files";
+	private static String rootPath = System.getProperty("user.dir")+"\\src\\com\\javaex\\objectclass\\ex3\\";
 	
 
 	public static void main(String[] args) {

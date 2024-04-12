@@ -23,7 +23,7 @@ public class ByteArrayStreamEx {
 //		OutputStream op = null;
 //		
 //		
-////		try - with - resource
+//		try - with - resource
 //		// 이곳은 main method라서 throw를 해도 처리할 수가 없다. 따라서 try/catch로 묶을것.
 //		try {
 //		ip = new ByteArrayInputStream(inSrc);
@@ -69,7 +69,7 @@ public class ByteArrayStreamEx {
 		// AutoCloseable을 활용한 예외 처리: try - with -resource
 		try (	// 자원 해제를 필요로 하는 객체를 초기화
 			InputStream is = new ByteArrayInputStream(inSrc);
-			OutputStream os = new ByteArrayOutputStream();
+			OutputStream os = new ByteArrayOutputStream();  //매개 변수를 이용한 초기화만 try로 묶어준다.
 				){
 			int data=0; // 입력 스트림으로부터 임력된 데이터 저장할 변수
 			
