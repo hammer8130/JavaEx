@@ -131,7 +131,8 @@ public class PhoneProjectEx {
 					break;
 				default:
 					System.out.println("[다시 입력해주세요.]");
-
+					
+				
 				}
 
 			} catch (FileNotFoundException e) {
@@ -141,7 +142,7 @@ public class PhoneProjectEx {
 			}
 
 		}
-
+		
 	}
 
 }
