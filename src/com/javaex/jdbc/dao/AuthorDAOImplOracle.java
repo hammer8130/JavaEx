@@ -70,8 +70,38 @@ public class AuthorDAOImplOracle implements AuthorDAO {
 
 	@Override
 	public AuthorVO get(Long id) {
-		
-		return null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		AuthorVO vo = null;
+		try {
+			conn = getConnection();
+			
+			String sql = "SELECT AUTHOR_ID, AUTHOR_NAME, AUTHOR_DESC FROM AUTHOR "
+					+ " WHERE AUTHOR_ID=? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Long authorId = rs.getLong(1);
+				String authorName = rs.getString(2);
+				String authorDesc = rs.getString(3);
+				vo = new AuthorVO(authorId, authorName, authorDesc);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null)conn.close();
+				if(pstmt!=null)pstmt.close();
+				if(rs!=null)rs.close();
+			}catch(Exception e) {
+				
+			}
+		}
+		return vo;
 	}
 
 	@Override
@@ -109,14 +139,61 @@ public class AuthorDAOImplOracle implements AuthorDAO {
 
 	@Override
 	public boolean delete(Long id) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = null;
+		PreparedStatement pstmt= null;
+		int deletedCount =0;
+		
+		try {
+			conn = getConnection();
+			String sql = "DELETE FROM AUTHOER WHERE AUTHOR_ID=?";
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setLong(1, id);
+			
+			deletedCount = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(conn!=null)conn.close();
+				if(pstmt!=null)pstmt.close();
+			}catch(Exception e) {
+				
+			}
+		}
+		return deletedCount==1;
 	}
 
 	@Override
 	public boolean update(AuthorVO authorVo) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		
+		try {
+		// Connection 맺기
+			conn = getConnection();
+		// 실행 계획 준비
+			String sql = "UPDATE AUTHOR SET author_name=?,author_desc=? WHERE author_id=?";
+			pstmt=conn.prepareStatement(sql);
+		// 파라미터 바인딩
+			pstmt.setString(1, authorVo.getAuthorName());
+			pstmt.setString(2, authorVo.getAuthorDesc());
+			pstmt.setLong(3, authorVo.getAuthorId());			
+		// SQL 실행 -> 레코드 카운트를 받아들임
+			updateCount = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null)conn.close();
+				if(pstmt!=null)pstmt.close();
+			}catch(Exception e) {
+				
+			}
+		}
+		return updateCount==1;
 	}
 
 }
